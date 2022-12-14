@@ -12,10 +12,12 @@ contract FileContract {
         string DocDesc;
         address DocOwner;
         uint256 createdAt;
+        string group;
         bool isCreated;
     }
 
-    mapping(string => Data) public documents;
+    mapping(string => Data) documents;
+    mapping(uint256 => Data) public forDoc;
 
     event Document(
         string hashFTP,
@@ -24,13 +26,15 @@ contract FileContract {
         string DocDesc,
         address DocOwner,
         uint256 createdAt,
+        string group,
         bool isCreated
     );
 
     function addDocument(
         string memory _hashFTP,
         string memory _DocName,
-        string memory _DocDesc
+        string memory _DocDesc,
+        string memory _group
     ) public {
         docCounter++;
         documents[_hashFTP] = Data(
@@ -40,6 +44,17 @@ contract FileContract {
             _DocDesc,
             msg.sender,
             block.timestamp,
+            _group,
+            true
+        );
+        forDoc[docCounter] = Data(
+            _hashFTP,
+            docCounter,
+            _DocName,
+            _DocDesc,
+            msg.sender,
+            block.timestamp,
+            _group,
             true
         );
         emit Document(
@@ -49,6 +64,7 @@ contract FileContract {
             _DocDesc,
             msg.sender,
             block.timestamp,
+            _group,
             true
         );
     }
@@ -66,6 +82,7 @@ contract FileContract {
             document.DocDesc,
             document.DocOwner,
             document.createdAt,
+            document.group,
             document.isCreated
         );
     }

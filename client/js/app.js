@@ -1,22 +1,3 @@
-document
-  .getElementById('file-input')
-  .addEventListener('change', leerArchivo, false);
-
-let contenido;
-
-async function leerArchivo(e) {
-  let archivo = e.target.files[0];
-  if (!archivo) {
-    return;
-  }
-  let lector = new FileReader();
-  lector.onload = function (e) {
-    console.log(`RobinDev - e`, e);
-    contenido = md5(e.target.result);
-  };
-  lector.readAsText(archivo);
-}
-
 App = {
   contracts: {},
   web3Provider: '',
@@ -26,6 +7,7 @@ App = {
     await App.loadEthereum();
     await App.loadAccount();
     await App.loadContracts();
+    await App.renderDocs();
   },
 
   loadEthereum: async () => {
@@ -60,5 +42,70 @@ App = {
 
     // Se conecta y utiliza el contrato desplegado
     App.fileContract = await App.contracts.fileContract.deployed();
+  },
+
+  renderDocs: async () => {
+    const counter = await App.fileContract.docCounter();
+    const docCounter = counter.toNumber();
+
+    console.log(`RobinDev ---------------------------------RobinDev`);
+    console.log(`RobinDev - docCounter`, docCounter);
+    console.log(`RobinDev ---------------------------------RobinDev`);
+
+    let html = '';
+
+    for (let i = 1; i <= docCounter; i++) {
+      const doc = await App.fileContract.forDoc(i);
+      const docId = doc['id'];
+      const docTitle = doc['DocName'];
+      const docDesc = doc['DocDesc'];
+      const docOwner = doc['DocOwner'];
+      const docDate = doc['createdAt'];
+      const docGroup = doc['group'];
+
+      let docElement = `
+      <tr>
+        <th scope="row">${docId}</th>
+        <td>${docTitle}</td>
+        <td>${docDesc}</td>
+        <td>Certificados</td>
+        <td>${new Date(docDate * 1000).toLocaleString()}</td>
+        <td>${docOwner}</td>
+        <td>${docGroup}</td>
+      </tr>
+      `;
+
+      html += docElement;
+    }
+    document.querySelector('#documents').innerHTML = html;
+  },
+
+  getDocument: async (hash) => {
+    const docExist = await App.fileContract.getDocument(hash, {
+      from: App.account,
+    });
+    const docTx = docExist.receipt;
+
+    console.log(`RobinDev -----------------------RobinDev`);
+    console.log(`RobinDev - docTx`, docTx);
+    console.log(`RobinDev -----------------------RobinDev`);
+    const docLog = docExist.logs[0].args;
+
+    console.log(`RobinDev -------------------------RobinDev`);
+    console.log(`RobinDev - docLog`, docLog);
+    console.log(`RobinDev -------------------------RobinDev`);
+    if (docExist) {
+      alert(
+        `El documento esta certificado por BlockChain 
+        \n Titulo: ${docLog['DocName']}
+        \n Decripcion: ${docLog['DocDesc']}
+        \n Fecha de Carga: ${new Date(
+          docLog['createdAt'] * 1000
+        ).toLocaleString()}
+        \n Dueño: ${docLog['DocOwner']}
+        \n Grupo: ${docLog['group']}
+        `
+      );
+    }
   },
 };

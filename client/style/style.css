@@ -1,3 +1,45 @@
 body {
-    /* background-color: grey; */
+  font-family: 'Open Sans', sans-serif;
+}
+
+#file-check {
+  display: flex;
+  flex-direction: column;
+}
+
+#file-check #file-input {
+  background: #fbfbfb 0% 0% no-repeat padding-box;
+  border: 1px dashed #0950a1;
+  height: 336px;
+  opacity: 1;
+  width: 100%;
+}
+
+#file-check .buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+#file-check .buttons input {
+  height: 40px;
+  width: 146px;
+}
+
+#file-check .buttons input[value='Subir'] {
+  background-color: #0950a1;
+  color: white;
+}
+
+.table-header {
+  background-color: #0950a1;
+  color: white;
+}
+
+.table-header th {
+  font-weight: 500;
+}
+
+article {
+  background-color: #f3f6fa;
 }
