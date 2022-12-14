@@ -108,4 +108,10 @@ App = {
       );
     }
   },
+
+  addDocument: async (hash, title, desc, group) => {
+    await App.fileContract.addDocument(hash, title, desc, group, {
+      from: App.account,
+    });
+  },
 };

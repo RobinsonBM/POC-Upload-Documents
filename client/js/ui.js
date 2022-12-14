@@ -1,7 +1,6 @@
 document
   .getElementById('file-input')
   .addEventListener('change', leerArchivo, false);
-
 async function leerArchivo(e) {
   let archivo = e.target.files[0];
   if (!archivo) {
