@@ -48,10 +48,6 @@ App = {
     const counter = await App.fileContract.docCounter();
     const docCounter = counter.toNumber();
 
-    console.log(`RobinDev ---------------------------------RobinDev`);
-    console.log(`RobinDev - docCounter`, docCounter);
-    console.log(`RobinDev ---------------------------------RobinDev`);
-
     let html = '';
 
     for (let i = 1; i <= docCounter; i++) {
@@ -85,15 +81,7 @@ App = {
       from: App.account,
     });
     const docTx = docExist.receipt;
-
-    console.log(`RobinDev -----------------------RobinDev`);
-    console.log(`RobinDev - docTx`, docTx);
-    console.log(`RobinDev -----------------------RobinDev`);
     const docLog = docExist.logs[0].args;
-
-    console.log(`RobinDev -------------------------RobinDev`);
-    console.log(`RobinDev - docLog`, docLog);
-    console.log(`RobinDev -------------------------RobinDev`);
     if (docExist) {
       alert(
         `El documento esta certificado por BlockChain 

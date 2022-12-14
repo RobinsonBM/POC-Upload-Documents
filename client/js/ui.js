@@ -10,10 +10,6 @@ async function leerArchivo(e) {
   lector.onload = function (e) {
     let hash = md5(e.target.result);
 
-    console.log(`RobinDev -----------------------------RobinDev`);
-    console.log(`RobinDev - App.hash`, hash);
-    console.log(`RobinDev -----------------------------RobinDev`);
-
     App.getDocument(hash);
   };
   lector.readAsText(archivo);

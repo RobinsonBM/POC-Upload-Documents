@@ -14,10 +14,6 @@ function addDocs(e) {
   let lector = new FileReader();
   lector.onload = function (e) {
     let hash = md5(e.target.result);
-
-    console.log(`RobinDev ---------------------RobinDev`);
-    console.log(`RobinDev - hash`, hash);
-    console.log(`RobinDev ---------------------RobinDev`);
     App.addDocument(hash, title, description, group);
   };
   lector.readAsText(archivo);
