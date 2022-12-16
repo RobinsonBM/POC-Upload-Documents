@@ -7,12 +7,50 @@ body {
   flex-direction: column;
 }
 
-#file-check #file-input {
+#file-check .update {
+  align-items: center;
   background: #fbfbfb 0% 0% no-repeat padding-box;
-  border: 1px dashed #0950a1;
+  border: 2px dashed #0950a1;
+  display: flex;
   height: 336px;
+  justify-content: center;
   opacity: 1;
+  position: relative;
   width: 100%;
+}
+
+#file-check .update .placeholder {
+  align-items: center;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  z-index: 1;
+}
+
+#file-check .update .placeholder p {
+  color: #0950a1;
+}
+
+#file-check .update .placeholder p:first-child {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+#file-check .update .placeholder p:nth-child(3) {
+  font-size: 0.9rem;
+}
+
+#file-check .update #file-input {
+  border: none;
+  background-color: transparent;
+  opacity: 0;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
 }
 
 #file-check .buttons {

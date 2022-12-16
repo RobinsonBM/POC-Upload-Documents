@@ -13,7 +13,14 @@
   <body>
     <section class="container my-5">
       <form id="file-check">
-        <input class="form-control mb-3" type="file" name="file" id="file-input" placeholder="Arrastra y suelta el archivo"/>
+        <div class="update mb-3">
+          <input class="form-control" type="file" name="file" id="file-input" placeholder="Arrastra y suelta el archivo"/>
+          <div class="placeholder">
+            <p class="title m-1">Arrastra y suelta el archivo</p>
+            <p class="mb-3">Seleccionar Aquí</p>
+            <p>Tamaño máximo: 100 MB</p>
+          </div>
+        </div>
         <div class="d-flex justify-content-between">
           <div class="file-upload">
             <a href="./admin.html">Subir archivos</a>
