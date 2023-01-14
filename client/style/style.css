@@ -2,6 +2,10 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+::placeholder {
+  font-size: 16px;
+}
+
 #file-check {
   display: flex;
   flex-direction: column;
@@ -53,22 +57,6 @@ body {
   z-index: 2;
 }
 
-#file-check .buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
-
-#file-check .buttons input {
-  height: 40px;
-  width: 146px;
-}
-
-#file-check .buttons input[value='Subir'] {
-  background-color: #0950a1;
-  color: white;
-}
-
 .table-header {
   background-color: #0950a1;
   color: white;
@@ -78,6 +66,58 @@ body {
   font-weight: 500;
 }
 
+#documents tr:nth-child(odd) {
+  background-color: #f3f3f3;
+}
+#documents tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
 article {
   background-color: #f3f6fa;
+}
+
+.form-search {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  padding-bottom: 30px;
+}
+
+.content {
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+.icon-search {
+  fill: #0950a1;
+  height: 16px;
+  position: absolute;
+  left: 18px;
+}
+
+.input-search {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border-radius: 10px;
+  box-shadow: 0px 3px 6px #00000029;
+  height: 50px;
+  padding-left: 40px;
+  width: 400px;
+}
+
+.file-upload {
+  margin-top: -0.8rem;
+  display: flex;
+  justify-content: end;
+}
+
+.file-upload button {
+  background: #0950a1 0% 0% no-repeat padding-box;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0px 3px 6px #00000029;
+  color: white;
+  height: 40px;
+  width: 192px;
 }

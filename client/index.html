@@ -8,46 +8,71 @@
     <link rel="stylesheet" href="./style/style.css" />
     <script src="/libs/blueimp-md5/js/md5.min.js"></script>
     <script src="/libs/@truffle/contract/browser-dist/truffle-contract.min.js"></script>
+    <link href="/libs/@fortawesome/css/fontawesome.css" rel="stylesheet" />
+    <link href="/libs/@fortawesome/css/brands.css" rel="stylesheet" />
+    <link href="/libs/@fortawesome/css/solid.css" rel="stylesheet" />
     <title>DApp</title>
   </head>
   <body>
     <section class="container my-5">
       <form id="file-check">
         <div class="update mb-3">
-          <input class="form-control" type="file" name="file" id="file-input" placeholder="Arrastra y suelta el archivo"/>
+          <input
+            class="form-control"
+            type="file"
+            name="file"
+            id="file-input"
+            placeholder="Arrastra y suelta el archivo"
+          />
           <div class="placeholder">
             <p class="title m-1">Arrastra y suelta el archivo</p>
             <p class="mb-3">Seleccionar Aquí</p>
             <p>Tamaño máximo: 100 MB</p>
           </div>
         </div>
-        <div class="d-flex justify-content-between">
-          <div class="file-upload">
-            <a href="./admin.html">Subir archivos</a>
-          </div>
-          <div class="buttons">
-            <input class="btn btn-light me-2" type="reset" value="Limpiar">
-            <input class="btn" type="submit" value="Subir"></input>
-          </div>
-        </div>
       </form>
     </section>
     <article class="py-5">
-      <table class="table container">
-        <thead>
-          <tr class="table-header">
-            <th scope="col">#</th>
-            <th scope="col">Titulo del registro</th>
-            <th scope="col">Descripcion</th>
-            <th scope="col">Certificados</th>
-            <th scope="col">Fecha de carga</th>
-            <th scope="col">Dueño</th>
-            <th scope="col">Grupo</th>
-          </tr>
-        </thead>
-        <tbody id="documents">
-        </tbody>
-      </table>
+      <div class="container">
+        <form class="form-search" role="search">
+          <div class="content">
+            <svg
+              class="icon-search"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+            >
+              <path
+                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"
+              />
+            </svg>
+            <input
+              class="form-control input-search"
+              type="search"
+              placeholder="Buscar"
+              aria-label="Search"
+            />
+          </div>
+        </form>
+        <table class="table">
+          <thead>
+            <tr class="table-header">
+              <th scope="col">#</th>
+              <th scope="col">Titulo del registro</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Certificados</th>
+              <th scope="col">Fecha de carga</th>
+              <th scope="col">Dueño</th>
+              <th scope="col">Grupo</th>
+            </tr>
+          </thead>
+          <tbody id="documents"></tbody>
+        </table>
+        <div class="file-upload pt-2">
+          <a href="./admin.html">
+            <button>Subir archivo</button>
+          </a>
+        </div>
+      </div>
     </article>
   </body>
   <script src="./js/app.js"></script>

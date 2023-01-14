@@ -77,23 +77,31 @@ App = {
   },
 
   getDocument: async (hash) => {
-    const docExist = await App.fileContract.getDocument(hash, {
-      from: App.account,
-    });
-    const docTx = docExist.receipt;
-    const docLog = docExist.logs[0].args;
-    if (docExist) {
-      alert(
-        `El documento esta certificado por BlockChain 
-        \n Titulo: ${docLog['DocName']}
-        \n Decripcion: ${docLog['DocDesc']}
-        \n Fecha de Carga: ${new Date(
-          docLog['createdAt'] * 1000
-        ).toLocaleString()}
-        \n Dueño: ${docLog['DocOwner']}
-        \n Grupo: ${docLog['group']}
-        `
-      );
+    try {
+      const docExist = await App.fileContract.getDocument(hash, {
+        from: App.account,
+      });
+      const docTx = docExist.receipt;
+
+      console.log(`RobinDev -----------------------RobinDev`);
+      console.log(`RobinDev - docTx`, docTx);
+      console.log(`RobinDev -----------------------RobinDev`);
+      const docLog = docExist.logs[0].args;
+      if (docExist) {
+        alert(
+          `El documento esta certificado por BlockChain 
+          \n Titulo: ${docLog['DocName']}
+          \n Decripcion: ${docLog['DocDesc']}
+          \n Fecha de Carga: ${new Date(
+            docLog['createdAt'] * 1000
+          ).toLocaleString()}
+          \n Dueño: ${docLog['DocOwner']}
+          \n Grupo: ${docLog['group']}
+          `
+        );
+      }
+    } catch (error) {
+      alert('Tu contrato no es valido');
     }
   },
 

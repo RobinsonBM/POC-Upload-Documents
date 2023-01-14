@@ -44,7 +44,10 @@
 // require('dotenv').config();
 // const { MNEMONIC, PROJECT_ID } = process.env;
 
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
+const HDWalletProvider = require('truffle-hdwallet-provider-privkey');
+const privKeys = [
+  'c87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3',
+];
 
 module.exports = {
   /**
@@ -69,7 +72,6 @@ module.exports = {
       port: 7545, // Standard Ethereum port (default: none)
       network_id: '*', // Any network (default: none)
     },
-
     // An additional network, but with some advanced options…
     // advanced: {
     //   port: 8777,             // Custom port
@@ -91,11 +93,13 @@ module.exports = {
     // },
     //
     // Useful for private networks
-    // private: {
-    //   provider: () => new HDWalletProvider(MNEMONIC, `https://network.io`),
-    //   network_id: 2111,   // This network is yours, in the cloud.
-    //   production: true    // Treats this network as if it was a public net. (default: false)
-    // }
+    lacchain: {
+      provider: () => new HDWalletProvider(privKeys, 'http://127.0.0.1:8545'),
+      network_id: '*',
+      production: false,
+      gas: 6700000, // Gas sent with each transaction (default: ~6700000)
+      gasPrice: 100000000000, // 20 gwei (in wei) (default: 100 gwei)
+    },
   },
 
   // Set default mocha options here, use special reporters, etc.
