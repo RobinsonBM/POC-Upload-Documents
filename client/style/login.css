@@ -1,3 +1,8 @@
+body {
+  background-color: #f3f6fa;
+  font-family: 'Open Sans', sans-serif;
+}
+
 section {
   align-items: center;
   display: flex;
@@ -5,7 +10,33 @@ section {
   justify-content: center;
 }
 section form {
-  width: 500px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 375px;
+  justify-content: space-between;
+  padding: 30px;
+  width: 377px;
+}
+
+form h2 {
+  color: #0950a1;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+form label {
+  font-size: 15px;
+  color: #4c4c4c;
+  font-weight: 500;
+}
+
+form p {
+  color: #0950a1;
+  cursor: pointer;
+  text-align: end;
 }
 
 form .button {
@@ -16,5 +47,5 @@ form .button {
 input[type='submit'] {
   background-color: #0950a1;
   color: white;
-  width: 150px;
+  width: 100%;
 }

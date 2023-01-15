@@ -10,19 +10,24 @@
   </head>
   <body>
     <section class="container">
-      <form>
-        <div class="mb-3">
-          <label class="form-label" for="email">Email</label>
-          <input class="form-control" type="email" name="email" id="email" />
-        </div>
-        <div class="mb-3">
-          <label class="form-label" for="pass">Password</label>
-          <input class="form-control" type="pass" name="pass" id="pass" />
+      <form id="login">
+        <h2>Iniciar Sesion</h2>
+        <div>
+          <div class="mb-3">
+            <label class="form-label" for="email">Correo electronico</label>
+            <input class="form-control" type="email" name="email" id="email" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="pass">Contraseña</label>
+            <input class="form-control" type="password" name="pass" id="pass" />
+          </div>
+          <p>Olvidaste contraseña?</p>
         </div>
         <div class="button">
-          <input class="btn" type="submit" value="Conectar" />
+          <input class="btn btn-primary" type="submit" value="Iniciar sesión" />
         </div>
       </form>
     </section>
+    <script src="./js/login.js"></script>
   </body>
 </html>
