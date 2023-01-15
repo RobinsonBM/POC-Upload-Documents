@@ -18,7 +18,9 @@
     "@truffle/contract": "^4.6.9",
     "blueimp-md5": "^2.19.0",
     "bootstrap": "^5.2.3",
+    "izitoast": "^1.4.0",
     "lite-server": "^2.6.1",
     "truffle-hdwallet-provider-privkey": "^0.3.0"
-  }
+  },
+  "devDependencies": {}
 }

@@ -88,26 +88,104 @@ App = {
       console.log(`RobinDev -----------------------RobinDev`);
       const docLog = docExist.logs[0].args;
       if (docExist) {
-        alert(
-          `El documento esta certificado por BlockChain 
-          \n Titulo: ${docLog['DocName']}
-          \n Decripcion: ${docLog['DocDesc']}
-          \n Fecha de Carga: ${new Date(
+        iziToast.success({
+          class: 'alert-success',
+          close: true,
+          layout: 2,
+          maxWidth: 500,
+          message: `
+          <strong>Titulo:</strong> ${docLog['DocName']}
+          <br><strong>Decripcion:</strong> ${docLog['DocDesc']}
+          <br><strong>Fecha de Carga:</strong> ${new Date(
             docLog['createdAt'] * 1000
           ).toLocaleString()}
-          \n Dueño: ${docLog['DocOwner']}
-          \n Grupo: ${docLog['group']}
-          `
-        );
+          <br><strong>Dueño:</strong> ${docLog['DocOwner']}
+          <br><strong>Grupo:</strong> ${docLog['group']}
+          `,
+          messageColor: '#000000',
+          messageSize: '14px',
+          position: 'topCenter',
+          title: 'EL CERTIFICADO ES CORRECTO SEGÚN BLOCKCHAIN',
+          titleColor: '#25C554',
+          titleSize: '16px',
+          timeout: null,
+          progressBar: false,
+        });
       }
     } catch (error) {
-      alert('Tu contrato no es valido');
+      iziToast.error({
+        backgroundColor: '#F0E5E5',
+        class: 'alert-error',
+        close: true,
+        layout: 2,
+        maxWidth: 500,
+        message: 'Tu contrato no es valido',
+        messageColor: '#000000',
+        messageSize: '14px',
+        position: 'topCenter',
+        title: 'EL CERTIFICADO ES INVALIDO',
+        titleColor: '#E21414',
+        titleSize: '16px',
+        timeout: null,
+        progressBar: false,
+      });
     }
   },
 
   addDocument: async (hash, title, desc, group) => {
-    await App.fileContract.addDocument(hash, title, desc, group, {
-      from: App.account,
-    });
+    try {
+      const DocUpload = await App.fileContract.addDocument(
+        hash,
+        title,
+        desc,
+        group,
+        {
+          from: App.account,
+        }
+      );
+      const docLog = DocUpload.logs[0].args;
+      if (DocUpload) {
+        iziToast.success({
+          class: 'alert-success',
+          close: true,
+          layout: 2,
+          maxWidth: 500,
+          message: `
+          <strong>Titulo:</strong> ${docLog['DocName']}
+          <br><strong>Decripcion:</strong> ${docLog['DocDesc']}
+          <br><strong>Fecha de Carga:</strong> ${new Date(
+            docLog['createdAt'] * 1000
+          ).toLocaleString()}
+          <br><strong>Dueño:</strong> ${docLog['DocOwner']}
+          <br><strong>Grupo:</strong> ${docLog['group']}
+          `,
+          messageColor: '#000000',
+          messageSize: '14px',
+          onClosing: function () {
+            window.location.reload();
+          },
+          progressBar: false,
+          position: 'topCenter',
+          title: 'TU ARCHIVO SE HA CARGADO CORRECTAMENTE EN LA BLOCKCHAIN',
+          titleColor: '#25C554',
+          titleSize: '16px',
+          timeout: null,
+        });
+      }
+    } catch (error) {
+      iziToast.error({
+        backgroundColor: '#F0E5E5',
+        class: 'alert-error',
+        close: true,
+        layout: 2,
+        maxWidth: 500,
+        position: 'topCenter',
+        progressBar: false,
+        timeout: null,
+        title: 'TU ARCHIVO NO SE PUDO CARGAR A LA BLOCKCHAIN',
+        titleColor: '#E21414',
+        titleSize: '16px',
+      });
+    }
   },
 };

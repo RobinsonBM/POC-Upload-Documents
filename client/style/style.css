@@ -1,9 +1,10 @@
-body {
-  font-family: 'Open Sans', sans-serif;
+body,
+.iziToast {
+  font-family: 'Open Sans', sans-serif !important;
 }
 
 ::placeholder {
-  font-size: 16px;
+  font-size: 0.9rem;
 }
 
 #file-check {
@@ -81,7 +82,7 @@ article {
   display: flex;
   flex-direction: row;
   justify-content: end;
-  padding-bottom: 30px;
+  padding-bottom: 32px;
 }
 
 .content {
@@ -120,4 +121,43 @@ article {
   color: white;
   height: 40px;
   width: 192px;
+}
+
+.alert-error {
+  border-radius: 10px !important;
+  border: 1px solid #f9cccc !important;
+  box-shadow: 0px 3px 6px #00000029 !important;
+}
+
+.alert-success {
+  background: #c3fed3 0% 0% no-repeat padding-box !important;
+  border: 1px solid #acfcc3 !important;
+  border-radius: 10px !important;
+  box-shadow: 0px 3px 6px #00000029 !important;
+}
+
+.iziToast-texts {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+.iziToast-title {
+  margin-bottom: 30px !important;
+  text-align: center !important;
+}
+
+.alert-error .iziToast-message {
+  text-align: center !important;
+}
+
+.iziToast:after {
+  display: none;
+}
+
+@media (max-width: 1000px) {
+  .table {
+    display: block;
+    overflow-x: auto;
+  }
 }
