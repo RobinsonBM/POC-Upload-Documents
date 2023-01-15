@@ -1,6 +1,9 @@
 const form = document.querySelector('#file-upload');
+const url = window.location.origin;
+const salir = document.querySelector('.logout-btn');
 
 form.addEventListener('submit', addDocs);
+salir.addEventListener('click', redirect);
 
 function addDocs(e) {
   e.preventDefault();
@@ -22,3 +25,8 @@ function addDocs(e) {
 document.addEventListener('DOMContentLoaded', () => {
   App.init();
 });
+
+function redirect() {
+  console.log('si');
+  window.location.href = url;
+}
