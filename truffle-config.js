@@ -44,7 +44,7 @@
 // require('dotenv').config();
 // const { MNEMONIC, PROJECT_ID } = process.env;
 
-const HDWalletProvider = require('truffle-hdwallet-provider-privkey');
+const HDWalletProvider = require('@truffle/hdwallet-provider');
 const privKeys = [
   'c87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3',
 ];
@@ -67,11 +67,11 @@ module.exports = {
     // tab if you use this network and you must also set the `host`, `port` and `network_id`
     // options below to some value.
     //
-    development: {
-      host: '127.0.0.1', // Localhost (default: none)
-      port: 7545, // Standard Ethereum port (default: none)
-      network_id: '*', // Any network (default: none)
-    },
+    // development: {
+    //   host: '127.0.0.1', // Localhost (default: none)
+    //   port: 7545, // Standard Ethereum port (default: none)
+    //   network_id: '*', // Any network (default: none)
+    // },
     // An additional network, but with some advanced options…
     // advanced: {
     //   port: 8777,             // Custom port
@@ -94,11 +94,14 @@ module.exports = {
     //
     // Useful for private networks
     lacchain: {
-      provider: () => new HDWalletProvider(privKeys, 'http://127.0.0.1:8545'),
+      provider: () =>
+        new HDWalletProvider({
+          privateKeys: privKeys,
+          providerOrUrl: 'http://localhost:8545',
+        }),
       network_id: '*',
       production: false,
       gas: 6700000, // Gas sent with each transaction (default: ~6700000)
-      gasPrice: 100000000000, // 20 gwei (in wei) (default: 100 gwei)
     },
   },
 
@@ -111,14 +114,15 @@ module.exports = {
   compilers: {
     solc: {
       version: '0.8.7', // Fetch exact version from solc-bin (default: truffle's version)
-      // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
-      // settings: {          // See the solidity docs for advice about optimization and evmVersion
-      //  optimizer: {
-      //    enabled: false,
-      //    runs: 200
-      //  },
-      //  evmVersion: "byzantium"
-      // }
+      docker: true, // Use "0.5.1" you've installed locally with docker (default: false)
+      settings: {
+        // See the solidity docs for advice about optimization and evmVersion
+        optimizer: {
+          enabled: false,
+          runs: 200,
+        },
+        //  evmVersion: "byzantium"
+      },
     },
   },
 
