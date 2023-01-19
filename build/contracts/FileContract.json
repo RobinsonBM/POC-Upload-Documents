@@ -67,8 +67,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -122,8 +121,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -6567,7 +6565,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 4294967281,
+                            "referencedDeclaration": -15,
                             "src": "962:3:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -6593,7 +6591,7 @@
                             "name": "block",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 4294967292,
+                            "referencedDeclaration": -4,
                             "src": "986:5:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_block",
@@ -6815,7 +6813,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 4294967281,
+                            "referencedDeclaration": -15,
                             "src": "1188:3:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -6841,7 +6839,7 @@
                             "name": "block",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 4294967292,
+                            "referencedDeclaration": -4,
                             "src": "1212:5:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_block",
@@ -7018,7 +7016,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 4294967281,
+                          "referencedDeclaration": -15,
                           "src": "1402:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -7044,7 +7042,7 @@
                           "name": "block",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 4294967292,
+                          "referencedDeclaration": -4,
                           "src": "1426:5:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_block",
@@ -7478,10 +7476,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
+                        -18,
+                        -18
                       ],
-                      "referencedDeclaration": 4294967278,
+                      "referencedDeclaration": -18,
                       "src": "1616:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -7858,25 +7856,24 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.8.7+commit.e28d00a7.Emscripten.clang"
+    "version": "0.8.7+commit.e28d00a7.Linux.g++"
   },
   "networks": {
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xD1377e87E76C63C365198B38cEdd4199Ed43D654",
-      "transactionHash": "0x8da96b02d73ef147d0f256c4990e9706ceac80cd2d6bcae4892b0c67544b320d"
+      "address": "0xa9a124F971c6B37C674fD9A8ae2EB9Aa428894e7",
+      "transactionHash": "0x50cd1f9f346832a44affec088ee8e2ae70d54b1e55425ad7f9b4cf23583de7d3"
     },
     "5494202210": {
       "events": {},
       "links": {},
-      "address": "0xF12b5dd4EAD5F743C6BaA640B0216200e89B60Da",
-      "transactionHash": "0xb4a9b08743905c059ea372c4f34675015d7bd97bf8d684d85b3df64b010ce3c3"
+      "address": "0x8CdaF0CD259887258Bc13a92C0a6dA92698644C0",
+      "transactionHash": "0x40a900e6f50907987151f8aa2d49ed9b7d41e0d0dc343e24eca00241112776e0"
     }
   },
   "schemaVersion": "3.4.11",
-  "updatedAt": "2023-01-15T14:27:31.394Z",
-  "networkType": "ethereum",
+  "updatedAt": "2023-01-16T19:51:52.191Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

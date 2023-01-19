@@ -15,9 +15,17 @@ function addDocs(e) {
     return;
   }
   let lector = new FileReader();
-  lector.onload = function (e) {
+  lector.onload = async function (e) {
     let hash = md5(e.target.result);
-    App.addDocument(hash, title, description, group);
+    let { update, DocOwner } = await App.addDocument(
+      hash,
+      title,
+      description,
+      group
+    );
+    if (update) {
+      formData(hash, DocOwner);
+    }
   };
   lector.readAsText(archivo);
 }
@@ -27,6 +35,16 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function redirect() {
-  console.log('si');
   window.location.href = url;
+}
+
+function formData(hash, DocOwner) {
+  try {
+    let formData = new FormData(document.querySelector('#file-upload'));
+    formData.append('hash', hash);
+    formData.append('DocOwner', DocOwner);
+    let request = new XMLHttpRequest();
+    request.open('POST', 'http://localhost:5000/upload');
+    request.send(formData);
+  } catch (error) {}
 }

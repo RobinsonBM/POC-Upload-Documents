@@ -80,12 +80,9 @@ App = {
     try {
       const docExist = await App.fileContract.getDocument(hash, {
         from: App.account,
+        gasLimit: 3000000,
       });
       const docTx = docExist.receipt;
-
-      console.log(`RobinDev -----------------------RobinDev`);
-      console.log(`RobinDev - docTx`, docTx);
-      console.log(`RobinDev -----------------------RobinDev`);
       const docLog = docExist.logs[0].args;
       if (docExist) {
         iziToast.success({
@@ -172,6 +169,10 @@ App = {
           timeout: null,
         });
       }
+      return {
+        update: true,
+        DocOwner: docLog['DocOwner'],
+      };
     } catch (error) {
       iziToast.error({
         backgroundColor: '#F0E5E5',
@@ -186,6 +187,7 @@ App = {
         titleColor: '#E21414',
         titleSize: '16px',
       });
+      return false;
     }
   },
 };
