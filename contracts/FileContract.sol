@@ -2,8 +2,11 @@
 
 pragma solidity ^0.8.7;
 
-contract FileContract {
+import "./BaseRelayRecipient.sol";
+
+contract FileContract is BaseRelayRecipient {
     uint256 public docCounter = 0;
+    address owner;
 
     struct Data {
         string hashFTP;
@@ -29,6 +32,12 @@ contract FileContract {
         string group,
         bool isCreated
     );
+
+    event ValueSeted(address sender);
+
+    constructor() {
+        owner = _msgSender();
+    }
 
     function addDocument(
         string memory _hashFTP,
@@ -67,6 +76,7 @@ contract FileContract {
             _group,
             true
         );
+        emit ValueSeted(_msgSender());
     }
 
     function getDocument(string memory _hashFTP) public {
@@ -85,5 +95,6 @@ contract FileContract {
             document.group,
             document.isCreated
         );
+        emit ValueSeted(_msgSender());
     }
 }
