@@ -33,8 +33,6 @@ contract FileContract is BaseRelayRecipient {
         bool isCreated
     );
 
-    event ValueSeted(address sender);
-
     constructor() {
         owner = _msgSender();
     }
@@ -76,7 +74,6 @@ contract FileContract is BaseRelayRecipient {
             _group,
             true
         );
-        emit ValueSeted(_msgSender());
     }
 
     function getDocument(string memory _hashFTP) public {
@@ -95,6 +92,5 @@ contract FileContract is BaseRelayRecipient {
             document.group,
             document.isCreated
         );
-        emit ValueSeted(_msgSender());
     }
 }

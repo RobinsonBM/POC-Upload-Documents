@@ -45,34 +45,48 @@ App = {
   },
 
   renderDocs: async () => {
-    const counter = await App.fileContract.docCounter();
-    const docCounter = counter.toNumber();
-
+    // const counter = await App.fileContract.docCounter();
+    // const docCounter = counter.toNumber();
+    let data = await App.getDocumentBD();
     let html = '';
-
-    for (let i = 1; i <= docCounter; i++) {
-      const doc = await App.fileContract.forDoc(i);
-      const docId = doc['id'];
-      const docTitle = doc['DocName'];
-      const docDesc = doc['DocDesc'];
-      const docOwner = doc['DocOwner'];
-      const docDate = doc['createdAt'];
-      const docGroup = doc['group'];
-
+    data.forEach((element) => {
       let docElement = `
-      <tr>
-        <th scope="row">${docId}</th>
-        <td>${docTitle}</td>
-        <td>${docDesc}</td>
-        <td>Certificados</td>
-        <td>${new Date(docDate * 1000).toLocaleString()}</td>
-        <td>${docOwner}</td>
-        <td>${docGroup}</td>
-      </tr>
-      `;
-
+       <tr>
+         <th scope="row">${element.id}</th>
+         <td>${element.Titulo}</td>
+         <td>${element.Descripcion}</td>
+         <td>Certificados</td>
+         <td>${new Date(element.createdAt * 1000).toLocaleString()}</td>
+         <td>${element.DocOwner}</td>
+         <td>${element.Grupo}</td>
+       </tr>
+       `;
       html += docElement;
-    }
+    });
+    // for (let i = 0; i < data.length; i++) {
+    //   // const doc = await App.fileContract.forDoc(i);
+    //   const doc = data[i];
+    //   const docId = doc.id;
+    //   const docTitle = doc.Titulo;
+    //   const docDesc = doc.Descripcion;
+    //   const docOwner = doc.DocOwner;
+    //   // const docDate = doc['createdAt'];
+    //   const docGroup = doc.Grupo;
+
+    //   let docElement = `
+    //   <tr>
+    //     <th scope="row">${docId}</th>
+    //     <td>${docTitle}</td>
+    //     <td>${docDesc}</td>
+    //     <td>Certificados</td>
+    //     <td>${new Date(docDate * 1000).toLocaleString()}</td>
+    //     <td>${docOwner}</td>
+    //     <td>${docGroup}</td>
+    //   </tr>
+    //   `;
+
+    //   html += docElement;
+    // }
     document.querySelector('#documents').innerHTML = html;
   },
 
@@ -172,6 +186,7 @@ App = {
       return {
         update: true,
         DocOwner: docLog['DocOwner'],
+        createdAt: docLog['createdAt'],
       };
     } catch (error) {
       iziToast.error({
@@ -189,5 +204,11 @@ App = {
       });
       return false;
     }
+  },
+
+  getDocumentBD: async () => {
+    let resp = await fetch('http://localhost:5000/get/Blockchain');
+    let { data } = await resp.json();
+    return data;
   },
 };

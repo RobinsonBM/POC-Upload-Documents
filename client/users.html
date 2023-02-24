@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="libs/axios/dist/axios.min.js"></script>
+    <title>Users</title>
+  </head>
+  <body>
+    <section class="container my-5">
+      <h1>Nuevos usuarios</h1>
+      <form id="newUser" class="row">
+        <div class="col-md-4 col-12 d-flex flex-column mb-3">
+          <label class="form-label" for="name">Nombre</label>
+          <input
+            class="form-control"
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Ej: Pedro"
+          />
+        </div>
+        <div class="col-md-4 col-12 d-flex flex-column mb-3">
+          <label class="form-label" for="lastname">Apellido</label>
+          <input
+            class="form-control"
+            type="text"
+            name="lastname"
+            id="lastname"
+            placeholder="Ej: Smith"
+          />
+        </div>
+        <div class="col-md-4 col-12 d-flex flex-column mb-3">
+          <label class="form-label" for="email">Email</label>
+          <input
+            class="form-control"
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Ej: ejemplo@gmail.com"
+          />
+        </div>
+        <div class="col-md-6 col-12 d-flex flex-column mb-3">
+          <label class="form-label" for="pass">Contraseña</label>
+          <input class="form-control" type="password" name="pass" id="pass" />
+        </div>
+        <div class="col-md-6 col-12 d-flex flex-column mb-3">
+          <label class="form-label" for="confirm">Confirmar contraseña</label>
+          <input
+            class="form-control"
+            type="password"
+            name="confirm"
+            id="confirm"
+          />
+        </div>
+        <div>
+          <button class="btn btn-primary" type="reset">Limpiar</button>
+          <button class="btn btn-primary" type="submit">Guardar Usuario</button>
+        </div>
+      </form>
+    </section>
+    <article class="container my-5">
+      <table class="table">
+        <thead>
+          <tr class="table-header">
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Rol</th>
+            <th scope="col">Aceptado</th>
+          </tr>
+        </thead>
+        <tbody id="documents"></tbody>
+      </table>
+      <a href="./admin.html">Volver al administrador</a>
+    </article>
+    <script src="./js/users.js"></script>
+  </body>
+</html>
